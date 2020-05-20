@@ -21,6 +21,11 @@ let products: Product[] = [
   },
 ];
 
+/**
+ * @description Get all products
+ * @route GET /api/v1/products
+ * @param response
+ */
 const getProducts = ({ response }: { response: any }) => {
   response.body = {
     success: true,
@@ -28,4 +33,52 @@ const getProducts = ({ response }: { response: any }) => {
   };
 };
 
-export { getProducts };
+/**
+ * @description Get one product
+ * @route GET /api/v1/products/:id
+ * @param response
+ */
+const getProduct = ({ response }: { response: any }) => {
+  response.body = {
+    success: true,
+    data: products,
+  };
+};
+
+/**
+ * @description Add product
+ * @route POST /api/v1/products
+ * @param response
+ */
+const addProduct = ({ response }: { response: any }) => {
+  response.body = {
+    success: true,
+    data: products,
+  };
+};
+
+/**
+ * @description Update product
+ * @route UPDATE /api/v1/products/:id
+ * @param response
+ */
+const updateProduct = ({ response }: { response: any }) => {
+  response.body = {
+    success: true,
+    data: products,
+  };
+};
+
+/**
+ * @description Delete product
+ * @route DELETE /api/v1/products/:id
+ * @param response
+ */
+const deleteProduct = ({ response }: { response: any }) => {
+  response.body = {
+    success: true,
+    data: products,
+  };
+};
+
+export { getProducts, getProduct, addProduct, updateProduct, deleteProduct };
