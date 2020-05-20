@@ -5,6 +5,9 @@
 ```
 deno run --allow-net server.ts
 ```
+### API Endpoints (localhost:5000/*)
+
+Link to [Postman Collection](https://www.getpostman.com/collections/fc9fed4eb4b844627a7d)
 
 ## Routes
 ```
