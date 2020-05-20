@@ -39,10 +39,7 @@ const getProducts = ({ response }: { response: any }) => {
  * @param response
  */
 const getProduct = ({ response }: { response: any }) => {
-  response.body = {
-    success: true,
-    data: products,
-  };
+  response.body = "get one product";
 };
 
 /**
@@ -51,10 +48,7 @@ const getProduct = ({ response }: { response: any }) => {
  * @param response
  */
 const addProduct = ({ response }: { response: any }) => {
-  response.body = {
-    success: true,
-    data: products,
-  };
+  response.body = "add";
 };
 
 /**
@@ -63,10 +57,7 @@ const addProduct = ({ response }: { response: any }) => {
  * @param response
  */
 const updateProduct = ({ response }: { response: any }) => {
-  response.body = {
-    success: true,
-    data: products,
-  };
+  response.body = "update";
 };
 
 /**
@@ -75,10 +66,7 @@ const updateProduct = ({ response }: { response: any }) => {
  * @param response
  */
 const deleteProduct = ({ response }: { response: any }) => {
-  response.body = {
-    success: true,
-    data: products,
-  };
+  response.body = "delete";
 };
 
 export { getProducts, getProduct, addProduct, updateProduct, deleteProduct };
