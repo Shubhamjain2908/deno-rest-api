@@ -221,14 +221,42 @@ const updateProduct = async (
  * @route DELETE /api/v1/products/:id
  * @param response
  */
-const deleteProduct = (
+const deleteProduct = async (
   { params, response }: { params: { id: string }; response: any },
 ) => {
-  products = products.filter((p) => p.id !== params.id);
-  response.body = {
-    success: true,
-    msg: "Product removed",
-  };
+  await getProduct({ params: { "id": params.id }, response });
+
+  if (response.status === 404) {
+    response.body = {
+      success: false,
+      msg: response.body.msg,
+    };
+    response.status = 404;
+    return;
+  } else {
+    try {
+      await client.connect();
+
+      const result = await client.query(
+        "DELETE FROM products WHERE id=$1",
+        params.id,
+      );
+
+      response.body = {
+        success: true,
+        msg: `Product with id ${params.id} has been deleted`,
+      };
+      response.status = 204;
+    } catch (err) {
+      response.status = 500;
+      response.body = {
+        success: false,
+        msg: err.toString(),
+      };
+    } finally {
+      await client.end();
+    }
+  }
 };
 
 export { getProducts, getProduct, addProduct, updateProduct, deleteProduct };
